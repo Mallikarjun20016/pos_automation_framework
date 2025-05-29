@@ -1,0 +1,191 @@
+{
+  "suite_name": "POS Payment Suite",
+  "scenarios": [
+    {
+      "name": "Product Selection Scenarios",
+      "test_cases": [
+        {
+          "name": "TC_002_Select_Random_Products",
+          "steps": [
+            { "action": "select_random_products" }
+          ]
+        },
+        {
+          "name": "TC_003_Delete_Two_Products",
+          "steps": [
+            { "action": "delete_two_products" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Full Payment Scenarios",
+      "test_cases": [
+        {
+          "name": "TC_004_Cash_Full_Payment",
+          "steps": [
+            { "action": "select_random_products" },
+            { "action": "cash_payment_full" }
+          ]
+        },
+        {
+          "name": "TC_005_UPI_Full_Payment",
+          "steps": [
+            { "action": "select_random_products" },
+            { "action": "upi_payment_full" }
+          ]
+        },
+        {
+          "name": "TC_006_Card_Full_Payment",
+          "steps": [
+            { "action": "select_random_products" },
+            { "action": "card_payment_full" }
+          ]
+        },
+        {
+          "name": "TC_007_Razor_Full_Payment",
+          "steps": [
+            { "action": "select_random_products" },
+            { "action": "razor_payment_full" }
+          ]
+        },
+        {
+          "name": "TC_008_Apply_Manual_Discount",
+          "steps": [
+            { "action": "click_discount_section" },
+            { "action": "wait_for_discount_input" },
+            { "action": "generate_random_discount" },
+            { "action": "apply_discount" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Advance Payment Scenarios",
+      "test_cases": [
+        {
+          "name": "TC_016_Advance_Payment_Scenario",
+          "steps": [
+            { "action": "select_random_products" },
+            { "action": "advance_payments" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Partial Payment Scenarios",
+      "test_cases": [
+        {
+          "name": "TC_008_Cash_Card_Partial",
+          "steps": [
+            { "action": "select_random_products" },
+            { "action": "cash_payment_partial_dynamic" },
+            { "action": "card_remaining_partial" }
+          ]
+        },
+        {
+          "name": "TC_009_Cash_UPI_Partial",
+          "steps": [
+            { "action": "product_drawer" },
+            { "action": "cash_payment_partial_dynamic" },
+            { "action": "upi_remaining_partial" }
+          ]
+        },
+        {
+          "name": "TC_010_Cash_Razor_Partial",
+          "steps": [
+            { "action": "product_drawer" },
+            { "action": "cash_payment_partial_dynamic" },
+            { "action": "razor_remaining_partial" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Third Party Payment Scenarios",
+      "test_cases": [
+        {
+          "name": "TC_011_Swiggy_Payment",
+          "steps": [
+            { "action": "sale_type_swiggy" },
+            { "action": "product_drawer" },
+            { "action": "swiggy_payment" }
+          ]
+        },
+        {
+          "name": "TC_012_Zomato_Payment",
+          "steps": [
+            { "action": "sale_type_zomato" },
+            { "action": "product_drawer" },
+            { "action": "zomato_payment" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Parked Bill Scenarios",
+      "test_cases": [
+        {
+          "name": "TC_013_Hold_Parked_Bill",
+          "steps": [
+            { "action": "product_drawer" },
+            { "action": "hold_parked" }
+          ]
+        },
+        {
+          "name": "TC_014_Retrieve_Parked_Bill",
+          "steps": [
+            { "action": "parked_bills" },
+            { "action": "cash_payment_full" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Miscellaneous Scenarios",
+      "test_cases": [
+        {
+          "name": "TC_015_Cancel_Selected_Product",
+          "steps": [
+            { "action": "select_random_products" },
+            { "action": "cancel_product" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cash Management Scenarios",
+      "test_cases": [
+        {
+          "name": "TC_017_Add_Cash_And_Notes",
+          "steps": [
+            {
+              "action": "cash_management_add_cash",
+              "data": {
+                "amount_random_range": [1, 200],
+                "note_random_choices": ["test", "test case"]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sample_data": {
+    "till_name": "{{ till_name }}"
+  },
+  "server_details": {
+    "base_url": "https://pos.example.com"
+  },
+  "test_data": {
+    "url": "https://pos.example.com",
+    "username": "testuser",
+    "password": "testpass",
+    "till_name": "Automation",
+    "product_codes": ["PROD001", "PROD002", "PROD003", "PROD004", "PROD005"],
+    "cash_management": {
+      "amount_random_range": [1, 200],
+      "note_random_choices": ["test", "test case"]
+    }
+  }
+}
