@@ -134,7 +134,9 @@ class TestExecutor:
             "Home_logout": lambda :pos_page.Home_logout(),
             "cash_remove": lambda :pos_page.cash_remove(),
             "custom_mix_qty_change": lambda :pos_page.custom_mix_qty_change(),
-            "sand_box": lambda :pos_page.sand_box()
+            "sand_box": lambda :pos_page.sand_box(),
+            "ofc_validation_discount": lambda :pos_page.ofc_validation_discount(),
+            "cash_payment_full_dynamic_round_off": lambda :pos_page.cash_payment_full_dynamic_round_off()
 
 
 
