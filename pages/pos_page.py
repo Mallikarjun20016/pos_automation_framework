@@ -1822,6 +1822,123 @@ class POSPage(BasePage):
 
 
 
+########################OFC_Gift_Card################################################
+    def OFC_Gift_Card_Full_payment(self):
+        self.click_element('(//span[text()="Gift Card"])[2]')
+
+        gift_card_number = self.data_reader.get_value("gift_card_number", "")
+        gift_card_pin = self.data_reader.get_value("gift_card_pin", "")
+
+        self.page.fill('//input[@placeholder="Enter Number"]', gift_card_number)
+        self.page.fill('//input[@placeholder="  Enter Pin"]', gift_card_pin)
+        self.click_element('//span[text()="Check Balance"]')
+
+        self.page.wait_for_timeout(3000)  # Let DOM update
+
+        amount_locator = self.page.locator('//span[@id="amount"]')
+
+
+
+        gift_card_balance = amount_locator.nth(0).inner_text()
+        bill_amount = amount_locator.nth(1).inner_text()
+        remaining_due = amount_locator.nth(3).inner_text()
+
+        # Use the same element as `remaining_due` to avoid strict mode issue
+        final_amount = amount_locator.nth(3).inner_text()
+
+        print(f"Gift Card Balance: {gift_card_balance}")
+        print(f"Bill Amount: {bill_amount}")
+        print(f"Remaining Due: {remaining_due}")
+        print(f"Final Amount: {final_amount}")
+
+        # Validate final amount equals remaining due
+        if float(final_amount) == float(remaining_due):
+            print("✅ Validation Passed: Final Amount matches Remaining Due")
+        else:
+            print("❌ Validation Failed: Final Amount does NOT match Remaining Due")
+
+        # Click Redeem
+        self.click_element('//span[text()="Redeem"]')
+
+
+
+
+#################Random_products##########################################################
+    def click_random_product_and_delete(self):
+        # Locate all product rows
+        product_rows = self.page.locator(
+            "//tr[contains(@class, 'ant-table-row') and contains(@class, 'ant-table-row-level-0')]")
+
+        # Count how many rows are present
+        count = product_rows.count()
+        print(f"Found {count} products")
+
+        if count == 0:
+            print("❌ No products found to click")
+            return
+
+        # Choose a random row index
+        random_index = random.randint(0, count - 1)
+        print(f"Clicking on product row index: {random_index + 1}")
+
+        # Click on the randomly selected product row
+        product_rows.nth(random_index).click()
+
+        # Now locate all delete buttons
+        delete_buttons = self.page.locator("//img[@id='sm-product-delete']")
+
+        # Ensure delete button exists for selected row
+        if delete_buttons.count() <= random_index:
+            print("❌ No corresponding delete button found")
+            return
+
+        # Click the delete button for the selected product
+        delete_buttons.nth(random_index).click()
+
+        print("✅ Deleted the randomly selected product")
+
+
+
+#####################################Product_drawer_OFC#######################################################
+
+    def product_drawer_ofc(self):
+        # Open the product drawer initially
+        self.click_element("//button[@id='sm-product-drawer']")
+
+        # Wait until the ADD buttons are loaded
+        add_buttons = self.page.locator("//span[contains(text(),'ADD')]")
+        total_products = add_buttons.count()
+
+        if total_products < 2:
+            raise Exception("Not enough products to select.")
+
+        # Choose 2 random unique indices
+        random_indices = random.sample(range(total_products), 2)
+
+        for i, index in enumerate(random_indices):
+            if i > 0:
+                # After first add, click product drawer again to bring it back
+                self.click_element("//button[@id='sm-product-drawer']")
+                self.page.wait_for_timeout(500)  # Optional: small wait for UI stability
+
+            # Re-fetch add_buttons (in case DOM changes)
+            add_buttons = self.page.locator("//span[contains(text(),'ADD')]")
+            add_buttons.nth(index).click()
+
+        logger.info("✅ Randomly added 2 products from drawer")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

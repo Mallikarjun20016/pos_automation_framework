@@ -136,7 +136,10 @@ class TestExecutor:
             "custom_mix_qty_change": lambda :pos_page.custom_mix_qty_change(),
             "sand_box": lambda :pos_page.sand_box(),
             "ofc_validation_discount": lambda :pos_page.ofc_validation_discount(),
-            "cash_payment_full_dynamic_round_off": lambda :pos_page.cash_payment_full_dynamic_round_off()
+            "cash_payment_full_dynamic_round_off": lambda :pos_page.cash_payment_full_dynamic_round_off(),
+            "OFC_Gift_Card_Full_payment": lambda :pos_page.OFC_Gift_Card_Full_payment(),
+            "click_random_product_and_delete": lambda :pos_page.click_random_product_and_delete(),
+            "product_drawer_ofc": lambda :pos_page.product_drawer_ofc()
 
 
 
