@@ -1929,6 +1929,18 @@ class POSPage(BasePage):
 
 
 
+    ##########Dadus Total amount to pay unknown customer paid###########################################
+    def Unknown_customer_to_pay_total_amount(self):
+        self.click_element("//p[text()='Total Amount To Pay']")
+        self.click_element("(//button[contains(text(), 'Enter')])[2]")
+        self.click_element('//span[text()="Yes, Proceed"]')
+
+
+    
+
+
+
+
 
 
 

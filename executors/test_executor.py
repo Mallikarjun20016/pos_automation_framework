@@ -139,7 +139,8 @@ class TestExecutor:
             "cash_payment_full_dynamic_round_off": lambda :pos_page.cash_payment_full_dynamic_round_off(),
             "OFC_Gift_Card_Full_payment": lambda :pos_page.OFC_Gift_Card_Full_payment(),
             "click_random_product_and_delete": lambda :pos_page.click_random_product_and_delete(),
-            "product_drawer_ofc": lambda :pos_page.product_drawer_ofc()
+            "product_drawer_ofc": lambda :pos_page.product_drawer_ofc(),
+            "Unknown_customer_to_pay_total_amount": lambda :pos_page.Unknown_customer_to_pay_total_amount()
 
 
 
