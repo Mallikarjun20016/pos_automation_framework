@@ -140,7 +140,8 @@ class TestExecutor:
             "OFC_Gift_Card_Full_payment": lambda :pos_page.OFC_Gift_Card_Full_payment(),
             "click_random_product_and_delete": lambda :pos_page.click_random_product_and_delete(),
             "product_drawer_ofc": lambda :pos_page.product_drawer_ofc(),
-            "Unknown_customer_to_pay_total_amount": lambda :pos_page.Unknown_customer_to_pay_total_amount()
+            "Unknown_customer_to_pay_total_amount": lambda :pos_page.Unknown_customer_to_pay_total_amount(),
+            "coupon_removel": lambda :pos_page.coupon_removel()
 
 
 

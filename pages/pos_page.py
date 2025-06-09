@@ -104,7 +104,7 @@ class POSPage(BasePage):
 
     def select_random_products(self):
         product_codes = self.data_reader.get_value("product_codes", [])
-        selected = random.sample(product_codes, min(1, len(product_codes)))
+        selected = random.sample(product_codes, min(5, len(product_codes)))
 
         for code in selected:
             self.fill_text("//input[@id='sm-product-search']", code)
@@ -1932,11 +1932,10 @@ class POSPage(BasePage):
     ##########Dadus Total amount to pay unknown customer paid###########################################
     def Unknown_customer_to_pay_total_amount(self):
         self.click_element("//p[text()='Total Amount To Pay']")
-        self.click_element("(//button[contains(text(), 'Enter')])[2]")
         self.click_element('//span[text()="Yes, Proceed"]')
 
 
-    
+
 
 
 
